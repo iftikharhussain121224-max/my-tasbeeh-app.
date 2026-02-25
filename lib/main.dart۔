@@ -1,0 +1,70 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const TasbeehCounterApp());
+}
+
+class TasbeehCounterApp extends StatelessWidget {
+  const TasbeehCounterApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Tasbeeh Counter',
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+      ),
+      home: const TasbeehCounterPage(),
+    );
+  }
+}
+
+class TasbeehCounterPage extends StatefulWidget {
+  const TasbeehCounterPage({Key? key}) : super(key: key);
+
+  @override
+  State<TasbeehCounterPage> createState() => _TasbeehCounterPageState();
+}
+
+class _TasbeehCounterPageState extends State<TasbeehCounterPage> {
+  int _count = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      _count++;
+    });
+  }
+
+  void _resetCounter() {
+    setState(() {
+      _count = 0;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Tasbeeh Counter'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh),
+            onPressed: _resetCounter,
+            tooltip: 'Reset Counter',
+          ),
+        ],
+      ),
+      body: Center(
+        child: Text(
+          '$_count',
+          style: const TextStyle(fontSize: 80, fontWeight: FontWeight.bold),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ),
+    );
+  }
+}
